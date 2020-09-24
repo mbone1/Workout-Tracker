@@ -2,7 +2,7 @@ let express = require("express");
 let mongoose = require("mongoose");
 let morgan = require("morgan");
 
-// const db = require("./models");
+const workout = require("./models");
 
 let PORT = process.env.PORT || 8080;
 let app = express();
