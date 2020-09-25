@@ -10,12 +10,15 @@ module.exports = function(app) {
             return db.Workout.find({})
         }
         res.json(findResponse)
+    });
 
+    app.get("/api/workouts/range", async function(req, res) {
+        res.json(await db.Workout.find().limit(7));
+    });
 
-        // console.vlog(req)
+    // console.vlog(req)
 
-        //res.json(await db.Workout.find())
-    })
+    //res.json(await db.Workout.find())
 
     // app.put("/api/workouts/:id", async function(req, res) {
 
