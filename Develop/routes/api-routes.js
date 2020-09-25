@@ -10,14 +10,17 @@ module.exports = function(app) {
             return db.Workout.find({})
         }
         res.json(findResponse)
-        console.log(req)
+
+
+        // console.vlog(req)
     })
     app.post("/api/workouts", async function(req, res) {
-        let newWorkoutRes = await createWorkout();
-        let workout = new Workout(body);
-        Workout.create(workout).then(dbWorkout => {
-            res.json(dbWorkout)
-        })
+        const res = await
+        console.log("hingus")
+            // db.Workout.create(req.body)
+            // .then(({ _id })=> db.Workout.findOneAndUpdate({},{
+            //     $push: {}
+            // }))
 
 
 
