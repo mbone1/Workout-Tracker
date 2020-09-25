@@ -13,20 +13,22 @@ module.exports = function(app) {
 
 
         // console.vlog(req)
-    })
-    app.post("/api/workouts", async function(req, res) {
-        const res = await
-        console.log("hingus")
-            // db.Workout.create(req.body)
-            // .then(({ _id })=> db.Workout.findOneAndUpdate({},{
-            //     $push: {}
-            // }))
 
-
-
+        //res.json(await db.Workout.find())
     })
 
+    // app.put("/api/workouts/:id", async function(req, res) {
 
+    // })
+
+    // app.post("/api/workouts", async function(req, res) {
+    //     res.json(await db.Workout.create(req.body));
+
+    // })
+
+    // app.get("/workouts/range", async function(req, res) {
+    //     res.json(await db.Workout.find().limit(7))
+    // });
 
 
 
