@@ -1,39 +1,24 @@
-const { Workout } = require("../models")
-    // const app = express();
 const db = require("../models")
 
 module.exports = function(app) {
     app.get("/api/workouts", async function(req, res) {
-        let findResponse = await findAll()
-
-        function findAll() {
-            return db.Workout.find({})
-        }
-        res.json(findResponse)
+        res.json(await db.Workout.find());
     });
 
     app.get("/api/workouts/range", async function(req, res) {
         res.json(await db.Workout.find().limit(7));
     });
 
-    // console.vlog(req)
+    app.post("/api/workouts", async function(req, res) {
+        res.json(await db.Workout.create(req.body));
+    })
 
-    //res.json(await db.Workout.find())
-
-    // app.put("/api/workouts/:id", async function(req, res) {
-
-    // })
-
-    // app.post("/api/workouts", async function(req, res) {
-    //     res.json(await db.Workout.create(req.body));
-
-    // })
-
-    // app.get("/workouts/range", async function(req, res) {
-    //     res.json(await db.Workout.find().limit(7))
-    // });
-
-
-
+    app.put("/api/workouts/:id", async function(req, res) {
+        res.json(
+            await db.Workout.findByIdAndUpdate(req.params.id, {
+                $push: { exercises: req.body },
+            })
+        );
+    });
 
 }

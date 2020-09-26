@@ -2,57 +2,51 @@ let mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-// const workoutSchema = new Schema({
-//     // date: new Date().setDate(new Date().getDate() - 10),
-//     type: String,
-//     name: String,
-//     duration: Number,
-//     weight: Number,
-//     reps: Number,
-//     sets: Number,
-// })
-
 const workoutSchema = new Schema({
-    day: {
-        type: Date,
-        default: Date.now
+        day: {
+            type: Date,
+            default: Date.now
+        },
+        exercises: [{
+            type: {
+                type: String,
+                trim: true,
+                required: "Enter Exercise Type"
+            },
+            name: {
+                type: String,
+                trim: true,
+                required: "Enter exercise name"
+            },
+            duration: {
+                type: Number,
+                trim: true,
+                required: "Enter exercise duration in minutes"
+            },
+            weight: {
+                type: Number
+            },
+            reps: {
+                type: Number
+            },
+            sets: {
+                type: Number
+            },
+            distance: {
+                type: Number
+            }
+
+        }]
+
     },
-    exercises: [{
-        type: {
-            type: String,
-            trim: true,
-            required: "Enter Exercise Type"
-        },
-        name: {
-            type: String,
-            trim: true,
-            required: "Enter exercise name"
-        },
-        duration: {
-            type: Number,
-            trim: true,
-            required: "Enter exercise duration in minutes"
-        },
-        weight: {
-            type: Number
-        },
-        reps: {
-            type: Number
-        },
-        sets: {
-            type: Number
-        },
-        duration: {
-            type: Number
+
+    {
+        toJSON: {
+            virtuals: true
         }
-
-    }]
-
-}, {
-    toJSON: {
-        virtuals: true
     }
-})
+
+)
 
 
 // adds a dynamically-created property to schema
